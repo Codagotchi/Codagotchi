@@ -1,0 +1,45 @@
+name: Firmware build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/**'
+      - '.github/workflows/platformio-build.yml'
+  pull_request:
+    paths:
+      - 'firmware/**'
+      - '.github/workflows/platformio-build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+          - waveshare_amoled_216
+          - waveshare_amoled_18
+          - waveshare_amoled_216_c6
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio/.cache
+            firmware/.pio
+          key: pio-${{ matrix.env }}-${{ hashFiles('firmware/platformio.ini', 'firmware/src/**') }}
+          restore-keys: |
+            pio-${{ matrix.env }}-
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Build ${{ matrix.env }}
+        run: pio run -d firmware -e ${{ matrix.env }}
