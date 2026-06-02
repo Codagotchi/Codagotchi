@@ -1,10 +1,8 @@
-# Codagotchi
-
-> The tamagotchi for people who max out their AI tokens.
+# Codagotchi - Your AI Token Pet
 
 Codagotchi is open-source ESP32 firmware (plus a small macOS daemon) for a
 round/portrait AMOLED desk display that turns your Claude Code and Codex usage
-into a living creature. The more you code, the more your pet thrives.
+into a living creature. The more you maximize your token usage, the more your pet thrives.
 
 <!-- TODO: replace with hero GIF of the device on a desk -->
 <p align="center">
@@ -35,9 +33,9 @@ in a browser tab.
 
 ```
 ┌──────────────────────┐    BLE GATT (JSON usage)    ┌──────────────────────┐
-│  Host daemon (macOS)  │ ─────────────────────────▶ │  ESP32 firmware       │
-│  polls Claude/Codex   │                            │  "Codagotchi"       │
-│  usage APIs           │ ◀───────────────────────── │  gauge + pet + HID    │
+│  Host daemon (macOS) │  ─────────────────────────▶ │  ESP32 firmware      │
+│  polls Claude/Codex  │                             │  "Codagotchi"        │
+│  usage APIs          │  ◀───────────────────────── │  gauge + pet + HID   │
 └──────────────────────┘    BLE HID (keystrokes)     └──────────────────────┘
 ```
 
@@ -57,11 +55,11 @@ voice-mode toggle, "feed") back to your CLI.
 Adding a new board is documented in [`docs/porting/adding-a-board.md`](docs/porting/adding-a-board.md).
 
 > **Platform:** the host daemon currently targets **macOS** (launchd + Keychain).
-> Linux support is not yet tested and is not included.
+> Other operating systems coming soon.
 
 ## System requirements
 
-- **macOS** (daemon uses launchd + Keychain; Linux not yet supported)
+- **macOS** (daemon uses launchd + Keychain on Mac)
 - **Python 3.9+** (`python3 --version`)
 - **PlatformIO** (`brew install platformio`)
 - **Claude Code** installed and signed in — the daemon reads its OAuth token from the Keychain
