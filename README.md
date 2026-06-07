@@ -207,9 +207,10 @@ MIT — see [`LICENSE`](LICENSE).
 
 **Not covered by MIT (do not redistribute):** the bundled fonts
 (`firmware/src/font_tiempos_*.c`, `font_styrene_*.c`), the Claude "Clawd"
-pixel-art in `firmware/src/splash_animations.h`, and the Codex pet sprite in
-`firmware/src/codex_pet_frames.h`. These are placeholders pending openly-licensed
-replacements; bring your own assets for a redistributable build.
+pixel-art in `firmware/src/splash_animations.h` (by [@amaanbuild](https://claudepix.vercel.app)),
+and the Codex pet sprite in `firmware/src/codex_pet_frames.h`
+(by [@Critters_Quest](https://codingpets.com)). These are placeholders pending
+openly-licensed replacements; bring your own assets for a redistributable build.
 
 ## Troubleshooting
 
@@ -236,6 +237,14 @@ Make sure you're signed into Claude Code (`claude login`) before running the dae
 
 ## Acknowledgements
 
-Built on [LVGL](https://lvgl.io/), [GFX Library for Arduino](https://github.com/moononournation/Arduino_GFX),
+**Pet art:**
+
+- The Codex pet sprite is by **[@Critters_Quest](https://codingpets.com)** ([codingpets.com](https://codingpets.com)).
+- The Claude "Clawd" pixel-art is by **[@amaanbuild](https://claudepix.vercel.app)** ([claudepix.vercel.app](https://claudepix.vercel.app)).
+
+These pets are placeholders under their creators' licenses and **cannot be
+redistributed** — see [License](#license). Huge thanks to both artists.
+
+**Built on** [LVGL](https://lvgl.io/), [GFX Library for Arduino](https://github.com/moononournation/Arduino_GFX),
 [NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino), and the
 [pioarduino](https://github.com/pioarduino) ESP32 platform.
