@@ -8,9 +8,9 @@ into a living creature. The more you maximize your token usage, the more your pe
 <p align="center">
   <img src="assets/demo.gif" alt="Codagotchi in action" width="400">
 </p>
-
 <p align="center">
   <img src="assets/n1.png" alt="Codagotchi screen" width="400">
+  <img src="assets/claude.jpg" alt="Codagotchi device" width="400">
 </p>
 
 [![Build](https://github.com/Codagotchi/Codagotchi/actions/workflows/platformio-build.yml/badge.svg)](https://github.com/Codagotchi/Codagotchi/actions/workflows/platformio-build.yml)
