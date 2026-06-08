@@ -4,7 +4,6 @@ Codagotchi is open-source ESP32 firmware (plus a small macOS daemon) for a
 round/portrait AMOLED desk display that turns your Claude Code and Codex usage
 into a living creature. The more you maximize your token usage, the more your pet thrives.
 
-<!-- TODO: replace with hero GIF of the device on a desk -->
 <p align="center">
   <img src="assets/demo.gif" alt="Codagotchi in action" width="400">
 </p>
