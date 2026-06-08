@@ -66,7 +66,7 @@ Adding a new board is documented in [`docs/porting/adding-a-board.md`](docs/port
 - **Python 3.9+** (`python3 --version`)
 - **PlatformIO** (`brew install platformio`)
 - **Claude Code** installed and signed in — the daemon reads its OAuth token from the Keychain
-- **Codex CLI** (optional) — if `~/.codex/auth.json` exists, Codex usage is auto-detected
+- **Codex CLI** — if `~/.codex/auth.json` exists, Codex usage is auto-detected
 - A supported Waveshare ESP32-S3 AMOLED board (see table above)
 
 ## Quick start
