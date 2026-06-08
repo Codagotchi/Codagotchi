@@ -7,6 +7,7 @@ firmware/.vscode/
 
 # Claude Code
 .claude/
+CLAUDE.md
 
 # Local device scripts
 device-flash.sh
@@ -14,6 +15,9 @@ device-flash.sh
 # Node tooling deps (npm install --no-save)
 tools/node_modules/
 tools/package-lock.json
+
+# Scratch / temp files
+tmp/
 
 # Mac daemon venv
 daemon/.venv/
