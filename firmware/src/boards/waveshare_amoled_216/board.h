@@ -8,8 +8,12 @@
 
 // ---- Display geometry (matches BoardCaps; duplicated here as compile-time
 // constants because the buffer-size math runs at file scope) ----
-#define LCD_WIDTH            480
-#define LCD_HEIGHT           480
+// Panel is 466x466 despite the product page advertising 480x480 — the
+// official engineering sample (waveshareteam/ESP32-S3-Touch-AMOLED-2.16,
+// pin_config.h) drives the CO5300 at 466. Addressing it as 480 makes the
+// controller reject every flush window, leaving the panel blank.
+#define LCD_WIDTH            466
+#define LCD_HEIGHT           466
 
 // ---- QSPI display pins (CO5300) ----
 #define LCD_CS               12
@@ -24,10 +28,11 @@
 #define IIC_SDA              15
 #define IIC_SCL              14
 
-// ---- Touch (CST9220 via TouchDrvCST92xx library) ----
+// ---- Touch (CST816 variant at 0x15; I2C scan confirmed — product page says
+// CST9220 at 0x5A but that address does not appear on this board revision) ----
 #define TP_INT               11
 #define TP_RST               2     // shared with LCD_RESET
-#define CST9220_ADDR         0x5A
+#define CST9220_ADDR         0x15
 
 // ---- PMU ----
 #define AXP2101_ADDR         0x34

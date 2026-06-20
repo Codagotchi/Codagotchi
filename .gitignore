@@ -11,6 +11,7 @@ CLAUDE.md
 
 # Local device scripts
 device-flash.sh
+flash-mac-s3.sh
 
 # Node tooling deps (npm install --no-save)
 tools/node_modules/
