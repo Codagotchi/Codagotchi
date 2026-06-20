@@ -63,4 +63,6 @@ void imu_hal_tick(void) {
     }
 }
 
-uint8_t imu_hal_rotation_quadrant(void) { return current_rotation; }
+// DEBUG: force 0 to isolate the display from the rotation/brightness-blank
+// path (IMU was oscillating 0<->2 and pinning brightness at 0).
+uint8_t imu_hal_rotation_quadrant(void) { return 0; }

@@ -26,9 +26,13 @@
 #define IIC_SDA              15
 #define IIC_SCL              14
 
-// ---- Touch (FT3168 via vendored minimal I2C reader) ----
+// ---- Touch ----
+// v2 boards use a CST816 at 0x15 (I2C scan confirmed; 0x38 is absent). v1
+// boards used an FT3168 at 0x38. Both share a FocalTech-style register map
+// (0x02=finger count, 0x03/04=X, 0x05/06=Y) so the minimal reader works for
+// either — only the address and the chip-ID register differ.
 #define TP_INT               21
-#define FT3168_ADDR          0x38
+#define TOUCH_ADDR           0x15
 
 // ---- PMU ----
 #define AXP2101_ADDR         0x34

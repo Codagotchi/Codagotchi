@@ -7,5 +7,6 @@
 // and touch controllers stay in reset until EXIO0..1 go HIGH.
 extern "C" void board_init(void) {
     Wire.begin(IIC_SDA, IIC_SCL);
+    Wire.setClock(100000);
     io_expander_init();
 }

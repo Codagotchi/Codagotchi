@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <TouchDrvCSTXXX.hpp>
 
-static TouchDrvCST92xx touch;
+static TouchDrvCSTXXX touch;  // auto-detects CST816 / CST226 / CST92xx
 
 static volatile bool     touch_data_ready = false;
 static volatile bool     touch_pressed = false;
@@ -16,7 +16,7 @@ static void IRAM_ATTR touch_isr(void) {
 }
 
 void touch_hal_init(void) {
-    touch.setPins(TP_RST, TP_INT);
+    touch.setPins(-1, TP_INT);
     if (!touch.begin(Wire, CST9220_ADDR, IIC_SDA, IIC_SCL)) {
         Serial.println("Touch init failed");
         return;
@@ -30,17 +30,17 @@ void touch_hal_init(void) {
 }
 
 void touch_hal_read(uint16_t* x, uint16_t* y, bool* pressed) {
-    if (touch_data_ready) {
-        touch_data_ready = false;
-        int16_t tx[5], ty[5];
-        uint8_t n = touch.getPoint(tx, ty, touch.getSupportTouchPoint());
-        if (n > 0) {
-            touch_pressed = true;
-            touch_x = (uint16_t)tx[0];
-            touch_y = (uint16_t)ty[0];
-        } else {
-            touch_pressed = false;
-        }
+    touch_data_ready = false;
+    int16_t tx[5], ty[5];
+    uint8_t n = touch.getPoint(tx, ty, touch.getSupportTouchPoint());
+    if (n > 0) {
+        if (!touch_pressed)
+            Serial.printf("Touch: (%d, %d)\n", tx[0], ty[0]);
+        touch_pressed = true;
+        touch_x = (uint16_t)tx[0];
+        touch_y = (uint16_t)ty[0];
+    } else {
+        touch_pressed = false;
     }
     *x = touch_x;
     *y = touch_y;
