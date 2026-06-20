@@ -9,16 +9,22 @@
 // must be initialized + released before gfx->begin() runs — main.cpp
 // arranges this by calling display_hal_init() after io_expander_init().
 
+// This is a v2 board: CO5300 panel + CST816 touch (confirmed by I2C scan —
+// touch answers at 0x15, not the v1 FT3168's 0x38). v1 units have an SH8601
+// panel instead. The CO5300 needs a 16-pixel column offset; this matches
+// Waveshare's official v2 example (Arduino-v3.3.5-v2/01_HelloWorld in
+// waveshareteam/ESP32-S3-Touch-AMOLED-1.8). v1 needs Arduino_SH8601 with no
+// offset.
 static Arduino_DataBus* bus = nullptr;
-static Arduino_SH8601*  gfx = nullptr;
+static Arduino_CO5300*  gfx = nullptr;
 
 void display_hal_init(void) {
     bus = new Arduino_ESP32QSPI(
         LCD_CS, LCD_SCLK, LCD_SDIO0, LCD_SDIO1, LCD_SDIO2, LCD_SDIO3);
-    // SH8601 constructor: (bus, rst, rotation, w, h)
-    gfx = new Arduino_SH8601(
+    // CO5300 constructor: (bus, rst, rotation, w, h, col_offset1..2, row_offset1..2)
+    gfx = new Arduino_CO5300(
         bus, GFX_NOT_DEFINED /* reset via XCA9554 */, 0,
-        LCD_WIDTH, LCD_HEIGHT);
+        LCD_WIDTH, LCD_HEIGHT, 16, 0, 0, 0);
 }
 
 void display_hal_begin(void) {
